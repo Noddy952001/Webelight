@@ -1,8 +1,20 @@
 import React from "react";
+import { useState } from "react";
 
 export const Addcart = () => {
 
+    
+
+    const [count , setcount] = useState(1)
     var currentUser = JSON.parse(localStorage.getItem('IndividualProduct'))
+
+    const Inc_Price = (el) => {
+
+        console.log(el)
+
+        if(el.id)
+        setcount(count + 1)
+    }
 
     return(
         <div>
@@ -20,7 +32,13 @@ export const Addcart = () => {
                             </div>
 
                             <div>
-                                <button>-</button> 1 <button>+</button>
+                                <button>-</button> {count} 
+                                
+                                <button 
+                                    onClick={ () => {
+                                        Inc_Price(el) 
+                                    }}
+                                >+</button>
                             </div>
                             <h1>Price :- {el.price}</h1>
                            
