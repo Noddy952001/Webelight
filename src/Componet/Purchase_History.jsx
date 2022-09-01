@@ -23,28 +23,25 @@ export const Purchase_History = () => {
 
                     return(
                                 
-                            <div className="row mb-5  border border-dark rounded" >
-                                {
-                                    order.items.map((item) => {
-                                        return(
-                                            <>
-                                                <div className="col-sm-3"><img style={{width:'100px'}} src={item.image} alt={item.title}></img></div>
-                                                <div className="col-sm-3">{item.title}</div>
-                                                <div className="col-sm-3">{item.count}</div>
-                                                <div className="col-sm-3">{item.count*item.price}</div>
-                                                
-                                            </>
-                                        )
-                                    })
-
-                                }
-                                <div style={{marginLeft:"400px"}}>
-                                    <h1>Total : {order.total}</h1>
-                                    <h5>Date : {order.date}</h5>
-                                </div>
+                        <div className="row mb-5  border border-dark rounded" >
+                            {
+                                order.items.map((item) => {
+                                    return(
+                                        <>
+                                            <div className="col-sm-3"><img style={{width:'100px'}} src={item.image} alt={item.title}></img></div>
+                                            <div className="col-sm-3">{item.title}</div>
+                                            <div className="col-sm-3">{item.count}</div>
+                                            <div className="col-sm-3">{item.count*item.price}</div>
+                                            
+                                        </>
+                                    )
+                                })
+                            }
+                            <div style={{marginLeft:"400px"}}>
+                                <h1>Total : {order.total}</h1>
+                                <h5>Date : {order.date}</h5>
                             </div>
-
-                            
+                        </div>
                     )
                 })
             }

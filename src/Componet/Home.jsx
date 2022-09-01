@@ -61,25 +61,6 @@ export const Home_page = () => {
         localStorage.setItem('IndividualProduct', JSON.stringify(individual))
     }
 
-
-    // const short  = () => {
-
-    //     console.log(value)
-    //     var filterdata = [...Products]
-    //     if(value == "High"){
-    //         filterdata.sort(function(a,b){
-    //             return  b.price -a.price 
-    //         })
-    //         setProducts(filterdata)
-    //     }
-    //     else if(value == "Low"){
-    //         filterdata.sort(function(a,b){
-    //             return a.price - b.price
-    //         })
-    //         setProducts(filterdata)
-    //     }
-    // }
-
     return(
         <div>
 
@@ -90,16 +71,7 @@ export const Home_page = () => {
             </button>
 
       
-            {/* <label>Short by Price</label>
-            <select 
-                id="Price"
-                value={value}
-                onChange={short}
-            >
-                <option value="High">High</option>
-                <option value="Low">Low</option>
-            </select> */}
-
+         
             <button
                 onClick={Increasing_order}>
                 Increase by price
