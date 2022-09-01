@@ -6,9 +6,6 @@ export const Addcart = () => {
     const [currentUser , setcurrentUser] = useState(JSON.parse(localStorage.getItem('IndividualProduct')));
 
 
-    
-    
-
     const Inc_Quantity = (el) => {
         let data =currentUser;
         for(var i=0; i<data.length; i++){
@@ -37,6 +34,27 @@ export const Addcart = () => {
             return [...data];
         })
     }
+
+    var total = 0
+    for(var i=0; i<currentUser.length; i++){
+       total +=  currentUser[i].count* currentUser[i].price
+    }
+
+    const Pay_Amount = () => {
+    
+        var Payment = JSON.parse(localStorage.getItem("Payment")) ||  []
+
+
+        Payment.push({
+                    total: total,
+                    items: currentUser,
+                    date: new Date()
+                });
+        localStorage.setItem('Payment', JSON.stringify(Payment))
+    }
+
+
+
 
     return(
         <div>
@@ -74,8 +92,11 @@ export const Addcart = () => {
                 })
             }
 
-            <div>
-                <h1>Subtotal </h1>
+            <div style={{display    : "flex" , marginLeft: "1100px"}}> 
+                <h1>Subtotal :-  {total}  </h1> 
+                <button 
+                    onClick={Pay_Amount}
+                >Pay</button>
             </div>
 
         </div>
