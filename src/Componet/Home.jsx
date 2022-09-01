@@ -11,6 +11,8 @@ export const Home_page = () => {
     const [status , setStatus] = useState(true)
     const [sort , setsort] = useState("Increse")
 
+    const [addcard , setaddcard] = useState([])
+
 
     useEffect(() => {
         Data()
@@ -49,6 +51,15 @@ export const Home_page = () => {
         setProducts(newdata)
     }
 
+    var individual = JSON.parse(localStorage.getItem("IndividualProduct")) ||  []
+
+    const  Addcard = (elem) => {
+        // alert()
+
+        individual.push(elem);
+        localStorage.setItem('IndividualProduct', JSON.stringify(individual))
+    }
+
 
     // const short  = () => {
 
@@ -71,7 +82,6 @@ export const Home_page = () => {
     return(
         <div>
 
-            <h1>E-commerce Market</h1>
 
             <button 
                 onClick={category}>
@@ -111,7 +121,11 @@ export const Home_page = () => {
                             </div>
 
                             <h1>Price :- {el.price}</h1>
-                            <button>Add card</button>
+                            <button 
+                                onClick={ () => {
+                                   Addcard(el) 
+                                }}
+                            >Add</button>
                         </div>
                     )
                 })
