@@ -3,17 +3,39 @@ import { useState } from "react";
 
 export const Addcart = () => {
 
+    const [currentUser , setcurrentUser] = useState(JSON.parse(localStorage.getItem('IndividualProduct')));
+
+
+    
     
 
-    const [count , setcount] = useState(1)
-    var currentUser = JSON.parse(localStorage.getItem('IndividualProduct'))
+    const Inc_Quantity = (el) => {
+        let data =currentUser;
+        for(var i=0; i<data.length; i++){
+            if(data[i].id === el.id){
+                data[i].count += 1; 
+            }
+        }
 
-    const Inc_Price = (el) => {
+        setcurrentUser((prevState)=>{
+            localStorage.setItem('IndividualProduct', JSON.stringify(data))
+            return [...data];
+        })
+    }
 
-        console.log(el)
+    const Dec_Quantity = (el) => {
 
-        if(el.id)
-        setcount(count + 1)
+        let data =currentUser;
+        for(var i=0; i<data.length; i++){
+            if(data[i].id === el.id){
+                data[i].count -= 1; 
+            }
+        }
+
+        setcurrentUser((prevState)=>{
+            localStorage.setItem('IndividualProduct', JSON.stringify(data))
+            return [...data];
+        })
     }
 
     return(
@@ -32,12 +54,17 @@ export const Addcart = () => {
                             </div>
 
                             <div>
-                                <button>-</button> {count} 
-                                
-                                <button 
+                                <button
                                     onClick={ () => {
-                                        Inc_Price(el) 
+                                        Dec_Quantity(el) 
                                     }}
+                                >-</button> 
+                                {el.count} 
+                                
+                                <button type="button" 
+                                    onClick={ () => 
+                                        Inc_Quantity(el) 
+                                    }
                                 >+</button>
                             </div>
                             <h1>Price :- {el.price}</h1>
@@ -46,6 +73,11 @@ export const Addcart = () => {
                     )
                 })
             }
+
+            <div>
+                <h1>Subtotal </h1>
+            </div>
+
         </div>
     )
 }

@@ -11,6 +11,10 @@ export const Navbar = () => {
 
             <Link to="/">Home</Link>
             <Link to="/addcart">Add card</Link>
+            <Link to="/pusechase_history">Purchase History</Link>
+
+
+           
 
         </div>
     )

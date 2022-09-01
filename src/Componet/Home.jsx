@@ -13,6 +13,7 @@ export const Home_page = () => {
 
     const [addcard , setaddcard] = useState([])
 
+    var alldata = []
 
     useEffect(() => {
         Data()
@@ -56,7 +57,7 @@ export const Home_page = () => {
     const  Addcard = (elem) => {
         // alert()
 
-        individual.push(elem);
+        individual.push({...elem, count: 1});
         localStorage.setItem('IndividualProduct', JSON.stringify(individual))
     }
 
